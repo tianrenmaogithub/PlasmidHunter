@@ -10,13 +10,13 @@ Plasmids are extrachromosomal DNA found in microorganisms. They often carry bene
 Keywords: artificial intelligence (AI), machine learning (ML), plasmid prediction, genomic sequencing
 
 ## Installation and run
-conda create -n plasmidhunter -c bioconda -y python=3.10 diamond=2.1.8 prodigal
-
+```
+conda create -n plasmidhunter python=3.10
 conda activate plasmidhunter
-
+conda install -c bioconda -y diamond=2.1.8 prodigal # For Windows users, please install the two packages manually instead.
 pip install plasmidhunter
-
 plasmidhunter -h
+```
 ## Result Interpretation
 The result is a tab-delimited table showing the prediction of each sequence. The columns include Prediction (0: chromosome, 1: plasmid), Probability of 0 (chromosome), and Probability of 1 (plasmid). 
 
