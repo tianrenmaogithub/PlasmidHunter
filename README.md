@@ -32,3 +32,5 @@ If you have any questions, please contact Renmao Tian (tianrenmao[at]gmail.com) 
 
 ## License
 Educational Community License, Version 2.0
+## Benchmark data
+https://zenodo.org/records/10433596
