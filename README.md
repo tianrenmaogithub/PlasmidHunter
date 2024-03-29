@@ -1,3 +1,4 @@
+Good News: We have built a Galaxy server at http://hts.iit.edu/galaxy. You can go to http://hts.iit.edu/galaxy/tool_runner?tool_id=plasmidhunter to analyze your data by simply uploading it and waiting. 
 <img src='logo2.png' width=150>
 <p>
 presented by Institute of Food Safety and Health, Illinois Institute of Technology
