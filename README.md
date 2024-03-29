@@ -13,7 +13,7 @@ Keywords: artificial intelligence (AI), machine learning (ML), plasmid predictio
 ```
 conda create -n plasmidhunter python=3.10
 conda activate plasmidhunter
-conda install -c bioconda -y diamond=2.1.8 prodigal # For Windows users, please install the two packages manually instead.
+conda install -c conda-forge -c bioconda -y diamond=2.1.8 prodigal # For Windows users, please install the two packages manually instead.
 pip install plasmidhunter
 plasmidhunter -h
 ```
