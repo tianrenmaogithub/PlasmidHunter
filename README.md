@@ -22,6 +22,23 @@ plasmidhunter -h
 ## Result Interpretation
 The result is a tab-delimited table showing the prediction of each sequence. The columns include Prediction (0: chromosome, 1: plasmid), Probability of 0 (chromosome), and Probability of 1 (plasmid). 
 
+## Change Log
+v1.1 9/1/2022
+
+PlasmidHunter is now using much less memory.
+
+v1.2 11/23/2023
+
+PlasmidHunter has an expanded database for a higher annotation rate.
+
+PlasmidHunter is now accepting shorter contigs down to 1 Kbp and has a higher accuracy for short contigs.
+
+v1.3 4/2024 Fixed some minor bugs
+
+v1.4 5/17/2024
+
+Converted model and feature pickle file into parameter file and text file, respectively.
+
 ## Citation
 PlasmidHunter: Accurate and fast prediction of plasmid sequences using gene content profile and machine learning
 
