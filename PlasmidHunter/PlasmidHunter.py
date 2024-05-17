@@ -15,12 +15,12 @@ args=parser.parse_args()
 
 def main():
     infile = args.inp
-    model = pkg_resources.resource_filename('PlasmidHunter', 'model/guassiannb.pkl')
-    feature_genes = pkg_resources.resource_filename('PlasmidHunter', 'model/feature_genes.pkl')
+    model = pkg_resources.resource_filename('PlasmidHunter', 'model/guassiannb_model_params.json.gz')
+    feature_genes = pkg_resources.resource_filename('PlasmidHunter', 'model/feature_genes.gz')
     database = f'{os.path.dirname(os.path.dirname(model))}/database/database.dmnd'
     if not os.path.exists(database):
-        print('Downloading database. Please wait some minutes ...')
-        os.mkdir(os.path.dirname(database))
+        print(f'{database}\nDownloading database. This will run only once. Please wait some minutes ...')
+        os.makedirs(os.path.dirname(database), exist_ok=True)
         download_file('https://zenodo.org/records/10431696/files/database.dmnd.gz?download=1', f'{database}.gz')
         unzip(f'{database}.gz')
 
@@ -39,8 +39,10 @@ def main():
     dict1 = gene_content_profile(outdir+'/input.fasta', prodigal, database, cpu=cpu)
 
     # predicting
-    feature_genes = pickle.load(open(feature_genes, 'rb'))
-    clf = pickle.loads(pickle.load(open(model, 'rb')))
+    #feature_genes = pickle.load(open(feature_genes, 'rb'))
+    feature_genes = json.loads(gzip.open(feature_genes, "rt", encoding="utf-8").read())
+    #clf = pickle.loads(pickle.load(open(model, 'rb')))
+    clf = load_model_params(model)
     pred = predict(dict1, feature_genes, clf)
     pred.to_csv(outdir+'/predictions.tsv', sep='\t')
     os.remove(outdir+'/input.fasta')

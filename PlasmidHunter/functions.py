@@ -12,6 +12,7 @@ from collections import Counter
 from Bio import SeqIO
 import requests
 import gzip
+from sklearn.naive_bayes import GaussianNB
 
 def unzip(infile):
     with gzip.open(infile, 'rb') as f_in:
@@ -107,6 +108,19 @@ def gene_content_profile(dna_file, prodigal_func, database, cpu=10): # get gene 
     shutil.rmtree(temp_dir)
     
     return(dict1)
+
+def load_model_params(param_file): #
+    with gzip.open(param_file, 'rt', encoding='utf-8') as file:
+        json_str = file.read()
+    params = json.loads(json_str)
+
+    model = GaussianNB()
+    model.class_prior_ = np.array(params['class_prior_'])
+    model.theta_ = np.array(params['theta_'])
+    model.var_ = np.array(params['var_'])
+    model.classes_ = np.array(params['classes_'])
+
+    return model
 
 def predict(dict1, feature_genes, clf):
     print('Predicting using a model ...')
